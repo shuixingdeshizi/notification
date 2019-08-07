@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 50px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notification</title>
+    <script src="../dist/notification.umd.js"></script>
+    <style>
+    #app {
+        width: 400px;
+        height: 300px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .btn {
+        width: 200px;
+        height: 50px;
+    }
+    </style>
+</head>
+<body>  
+    <div id="app"></div>
+    <button type="button" class="btn" onclick="handler()">Click Me Push</button>
+    <button type="button" class="btn" onclick="clearNotify()">Click Me Clear</button>
+    <button type="button" class="btn" onclick="removeNotify()">Click Me Remove</button>
+    <script>
+        var notify = new Notification('#app', {})
+
+        var i = 0
+        function handler () {
+            notify.push(`第${i}条信息`)
+            i++
+        }
+
+        function clearNotify () {
+            notify.clear()
+        }
+        function removeNotify () {
+            notify.remove(1)
+        }
+    </script>
+</body>
+</html>
